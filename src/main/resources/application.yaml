@@ -5,6 +5,15 @@ spring:
     url: jdbc:mysql://localhost:3306/shopping_Card
     username: springstudent
     password: springstudent
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
 server:
   port: 2024
+
