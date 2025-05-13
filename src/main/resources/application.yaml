@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: store
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopping_Card
+    username: springstudent
+    password: springstudent
+
+server:
+  port: 2024
