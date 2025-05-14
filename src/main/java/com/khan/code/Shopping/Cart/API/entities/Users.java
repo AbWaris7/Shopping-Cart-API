@@ -1,14 +1,17 @@
 package com.khan.code.Shopping.Cart.API.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Builder
 @Entity
 @Getter
 @Setter
+@ToString
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
@@ -27,6 +30,20 @@ public class Users {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    @Builder.Default
+    private List<Address> addressList = new ArrayList<Address>();
+
+    public void addAddress(Address address) {
+        addressList.add(address);
+        address.setUser(this);
+    }
+
+    public void removeAddress(Address address) {
+        addressList.remove(address);
+        address.setUser(null);
+    }
 
 
 }
