@@ -2,16 +2,17 @@ package com.khan.code.Shopping.Cart.API.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Table(name = "tags")
 public class Tag {
 
@@ -23,5 +24,11 @@ public class Tag {
     @Column(name = "name")
     private String name;
 
+    @ManyToMany(mappedBy = "tags")
+    @ToString.Exclude
+    private Set<Users> usersSet = new HashSet<Users>();
 
+    public Tag(String name) {
+        this.name = name;
+    }
 }
