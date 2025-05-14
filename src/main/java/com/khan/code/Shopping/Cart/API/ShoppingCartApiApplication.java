@@ -1,6 +1,7 @@
 package com.khan.code.Shopping.Cart.API;
 
 import com.khan.code.Shopping.Cart.API.entities.Address;
+import com.khan.code.Shopping.Cart.API.entities.Profile;
 import com.khan.code.Shopping.Cart.API.entities.Tag;
 import com.khan.code.Shopping.Cart.API.entities.Users;
 import org.apache.catalina.User;
@@ -19,9 +20,14 @@ public class ShoppingCartApiApplication {
 				.email("john@gmail.com")
 				.build();
 
+	var profile = Profile.builder()
+			.bio("bio")
+			.build();
 
-		user.addTag("tag");
-		System.out.println(user);
+
+	user.setProfile(profile);
+	profile.setUser(user);
+		System.out.println(profile);
 
 	}
 

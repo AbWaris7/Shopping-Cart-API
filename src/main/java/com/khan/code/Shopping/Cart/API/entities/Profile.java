@@ -2,13 +2,12 @@ package com.khan.code.Shopping.Cart.API.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.security.core.userdetails.User;
 
 import java.time.LocalDate;
 
+@Builder
 @Entity
 @Getter
 @Setter
@@ -34,4 +33,11 @@ public class Profile {
 
     @Column(name = "loyalty_points")
     private Integer loyaltyPoints;
+
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id")
+    @MapsId
+    @ToString.Exclude
+    private Users user;
 }

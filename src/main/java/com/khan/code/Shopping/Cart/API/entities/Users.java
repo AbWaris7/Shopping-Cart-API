@@ -61,4 +61,7 @@ public class Users {
     private Set<Tag> tags = new HashSet<>();
 
 
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
+
 }
