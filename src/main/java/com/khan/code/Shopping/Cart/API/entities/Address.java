@@ -2,13 +2,12 @@ package com.khan.code.Shopping.Cart.API.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@Builder
 @Entity
 @Getter
+@ToString
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,6 +29,11 @@ public class Address {
 
     @Column(name = "state")
     private String state;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    private Users user;
 
 
 }
