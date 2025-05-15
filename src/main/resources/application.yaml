@@ -1,9 +1,10 @@
 spring:
   application:
     name: store
+  jmx:
+    enabled: false
   datasource:
-    url: jdbc:mysql://localhost:3306/
-
+    url: jdbc:mysql://localhost:3306/shopping_card
     username: springstudent
     password: springstudent
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -12,9 +13,12 @@ spring:
     hibernate:
       ddl-auto: none
     database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+
   flyway:
     enabled: true
     baseline-on-migrate: true
+    default-schema: shopping_card
+
 server:
   port: 2024
-
